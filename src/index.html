@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071521">
+  <title>LUCA — Finanzas claras, familias fuertes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styless/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="LUCA inicio">
+        <span class="brand-mark"><span class="brand-orbit"></span><span class="brand-core">L</span></span>
+        <span class="brand-copy"><strong>LUCA</strong><small>Finanzas en familia</small></span>
+      </a>
+      <div class="workspace-label">TU ESPACIO</div>
+      <nav class="navigation" aria-label="Navegación principal">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">◫</span>Resumen <span class="nav-active-dot"></span></button>
+        <button class="nav-item" data-view="budget"><span class="nav-icon">◉</span>Presupuesto</button>
+        <button class="nav-item" data-view="movements"><span class="nav-icon">⇄</span>Movimientos</button>
+        <button class="nav-item" data-view="bills"><span class="nav-icon">▤</span>Facturas <span class="nav-count" id="billNavCount">0</span></button>
+        <button class="nav-item" data-view="insights"><span class="nav-icon">✧</span>Recomendaciones</button>
+        <button class="nav-item" data-view="goals"><span class="nav-icon">◎</span>Metas familiares</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="family-card">
+          <div class="family-avatars"><span>AD</span><span>EM</span><span>NS</span><span>+2</span></div>
+          <strong id="sidebarFamilyName">Mi familia</strong>
+          <p>Un equipo, una meta.</p>
+          <div class="family-progress"><span></span></div>
+          <small>Objetivo de ahorro · 68%</small>
+        </div>
+        <button class="nav-item help-button" data-view="help"><span class="nav-icon">?</span>Ayuda y privacidad</button>
+        <div class="profile-row"><div class="profile-avatar">DQ</div><div class="profile-copy"><strong id="profileFamilyName">Mi familia</strong><small>Cuenta familiar</small></div><span class="online-dot"></span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Abrir menú">☰</button>
+        <div class="breadcrumb"><span>LUCA</span><span class="crumb-slash">/</span><strong id="breadcrumbTitle">Resumen</strong></div>
+        <div class="topbar-actions"><span class="demo-pill"><i></i> Datos de demostración</span><button class="icon-button notification-button" id="notificationButton" aria-label="Ver facturas próximas">♧<span></span></button><button class="primary-button top-add" id="quickAdd">＋ Nuevo movimiento</button><button class="logout-button" id="logoutButton" type="button" title="Cerrar sesión">↪ Cerrar sesión</button></div>
+      </header>
+
+      <section class="view active-view" id="view-dashboard">
+        <div class="welcome-row">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> TU TRANQUILIDAD EMPIEZA AQUÍ</div><h1 id="welcomeHeading">¡Bienvenidos a LUCA! <span class="wave">✳</span></h1><p class="subheading">Cada decisión cuenta. Miremos cómo va nuestro dinero.</p></div>
+          <div class="period-picker"><span class="period-dot"></span><select id="monthFilter" aria-label="Seleccionar mes"><option value="2026-10">Octubre 2026</option><option value="2026-09">Septiembre 2026</option><option value="2026-08">Agosto 2026</option></select><span>⌄</span></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-grid"></div><div class="hero-content">
+            <div class="hero-top"><span class="hero-label"><span class="live-dot"></span> BALANCE DEL MES</span><span class="hero-chip">✦ Vista familiar</span></div>
+            <div class="balance-amount" id="heroBalance">$ 2.845.000</div>
+            <div class="balance-caption">Dinero restante después de los gastos registrados</div>
+            <div class="hero-bottom"><div class="hero-stat"><span class="mini-stat-icon income-icon">↙</span><div><small>Ingresos del mes</small><strong id="heroIncome">$ 6.500.000</strong></div></div><div class="hero-divider"></div><div class="hero-stat"><span class="mini-stat-icon expense-icon">↗</span><div><small>Gastos del mes</small><strong id="heroExpenses">$ 3.655.000</strong></div></div><button class="hero-link" data-goto="movements">Ver movimientos <span>↗</span></button></div>
+          </div><div class="hero-decoration"><div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div><div class="hero-spark spark-a">✦</div><div class="hero-spark spark-b">✧</div></div>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon mint">↙</span><span class="metric-trend positive">+8,4%</span></div><p>Ingresos totales</p><strong id="metricIncome">$ 6.500.000</strong><small>En el periodo seleccionado</small><div class="mini-bars bars-income"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon coral">↗</span><span class="metric-trend neutral">Este mes</span></div><p>Gastos totales</p><strong id="metricExpenses">$ 3.655.000</strong><small>De todos los movimientos</small><div class="mini-bars bars-expense"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon blue">◉</span><span class="metric-trend positive" id="budgetTrend">64% usado</span></div><p>Presupuesto utilizado</p><strong id="metricBudget">$ 3.655.000</strong><small id="budgetSub">De $ 5.700.000 planeados</small><div class="metric-progress"><span id="budgetProgress"></span></div></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon violet">▤</span><span class="metric-trend warning" id="billTrend">Por revisar</span></div><p>Facturas pendientes</p><strong id="metricBills">3 facturas</strong><small id="billSub">Próximos pagos del hogar</small><div class="bill-mini-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel spending-panel"><div class="panel-heading"><div><h2>¿A dónde va el dinero?</h2><p>Distribución de tus gastos por categoría</p></div><button class="text-button" data-goto="budget">Ver presupuesto <span>↗</span></button></div><div class="spending-content"><div class="donut-wrap"><div class="donut-chart" id="donutChart"><div class="donut-hole"><strong id="donutTotal">$3.65M</strong><span>Gastos totales</span></div></div></div><div class="legend-list" id="categoryLegend"></div></div><div class="panel-footnote"><span class="info-dot">i</span> Los valores se calculan con los movimientos registrados.</div></article>
+          <article class="panel bills-panel"><div class="panel-heading"><div><h2>Próximos pagos</h2><p>Que ninguna fecha te tome por sorpresa</p></div><button class="round-arrow" data-goto="bills" aria-label="Ver facturas">↗</button></div><div id="upcomingBills" class="upcoming-list"></div><button class="outline-button full-button" data-goto="bills">Ver todas las facturas <span>→</span></button></article>
+        </div>
+        <div class="content-grid lower-grid">
+          <article class="panel activity-panel"><div class="panel-heading"><div><h2>Actividad reciente</h2><p>Los últimos movimientos de tu hogar</p></div><button class="text-button" data-goto="movements">Ver todos <span>↗</span></button></div><div class="table-wrap"><table><thead><tr><th>CONCEPTO</th><th>CATEGORÍA</th><th>FECHA</th><th class="align-right">VALOR</th></tr></thead><tbody id="recentMovements"></tbody></table></div></article>
+          <article class="panel insight-teaser"><div class="insight-orb">✦</div><div class="eyebrow">UN PASO A LA VEZ</div><h2>El dinero funciona mejor cuando hablamos de él.</h2><p id="teaserText">Una revisión breve cada semana puede ayudar a que toda la familia tenga claras sus prioridades.</p><button class="primary-button" data-goto="insights">Descubrir recomendaciones <span>→</span></button><div class="teaser-stars">✧　·　✦　·　✧</div></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-budget">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> PLANEAR PARA VIVIR CON CALMA</div><h1>Presupuesto familiar</h1><p class="subheading">Un plan realista empieza con conversaciones claras.</p></div><button class="primary-button" id="addBudgetButton">＋ Ajustar categoría</button></div>
+        <div class="budget-summary-grid"><article class="summary-tile"><span>Presupuesto planeado</span><strong id="budgetTotalLarge">$ 5.700.000</strong><small>Tu objetivo para este mes</small></article><article class="summary-tile"><span>Gasto registrado</span><strong id="budgetSpentLarge">$ 3.655.000</strong><small>Lo que ha salido del presupuesto</small></article><article class="summary-tile"><span>Disponible</span><strong class="text-mint" id="budgetRemainingLarge">$ 2.045.000</strong><small>Para lo que queda del mes</small></article></div>
+        <article class="panel budget-detail-panel"><div class="panel-heading"><div><h2>Tu plan por categorías</h2><p>Compara lo planeado con el gasto real</p></div><span class="soft-badge">Octubre 2026</span></div><div id="budgetCategories" class="budget-category-list"></div></article>
+        <article class="gentle-note"><span class="note-icon">✧</span><div><strong>Un presupuesto es una guía, no una regla para juzgar.</strong><p>Las necesidades cambian. Revisen juntos las prioridades y ajusten los límites cuando sea necesario.</p></div></article>
+      </section>
+
+      <section class="view" id="view-movements">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> CADA PESO TIENE UNA HISTORIA</div><h1>Movimientos</h1><p class="subheading">Registra, revisa y entiende los ingresos y gastos del hogar.</p></div><button class="primary-button" id="addMovementButton">＋ Nuevo movimiento</button></div>
+        <div class="movement-summary"><div><span>Ingresos</span><strong class="text-mint" id="movementIncome">$ 6.500.000</strong></div><div><span>Gastos</span><strong id="movementExpenses">$ 3.655.000</strong></div><div><span>Movimientos registrados</span><strong id="movementCount">8</strong></div></div>
+        <article class="panel movement-panel"><div class="filter-row"><div class="search-box"><span>⌕</span><input id="movementSearch" type="search" placeholder="Buscar por concepto..." aria-label="Buscar movimientos"></div><select id="typeFilter" class="filter-select"><option value="all">Todos los tipos</option><option value="ingreso">Ingresos</option><option value="gasto">Gastos</option></select><select id="categoryFilter" class="filter-select"><option value="all">Todas las categorías</option></select></div><div class="table-wrap"><table class="full-table"><thead><tr><th>CONCEPTO</th><th>TIPO</th><th>CATEGORÍA</th><th>FECHA</th><th class="align-right">VALOR</th><th></th></tr></thead><tbody id="allMovements"></tbody></table></div><div class="empty-state hidden" id="movementEmpty">No encontramos movimientos con esos filtros.</div></article>
+      </section>
+
+      <section class="view" id="view-bills">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ORGANIZACIÓN SIN SORPRESAS</div><h1>Facturas y pagos</h1><p class="subheading">Tener las fechas claras ayuda a planear con tranquilidad.</p></div><button class="primary-button" id="addBillButton">＋ Añadir factura</button></div>
+        <div class="bill-summary-grid"><article class="summary-tile"><span>Pendiente por pagar</span><strong id="pendingAmount">$ 745.000</strong><small>Facturas aún sin marcar como pagadas</small></article><article class="summary-tile"><span>Pagadas</span><strong id="paidCount">2 facturas</strong><small>Compromisos completados</small></article><article class="summary-tile"><span>Próximo vencimiento</span><strong id="nextDue">20 oct.</strong><small id="nextDueName">Servicio de internet</small></article></div>
+        <article class="panel"><div class="panel-heading"><div><h2>Tus facturas</h2><p>Marca una factura como pagada cuando esté lista</p></div><select class="filter-select" id="billFilter"><option value="all">Todos los estados</option><option value="pendiente">Pendientes</option><option value="pagada">Pagadas</option></select></div><div class="table-wrap"><table class="full-table"><thead><tr><th>FACTURA</th><th>VENCIMIENTO</th><th>ESTADO</th><th class="align-right">VALOR</th><th>ACCIÓN</th></tr></thead><tbody id="allBills"></tbody></table></div><div class="empty-state hidden" id="billEmpty">No hay facturas para mostrar.</div></article>
+      </section>
+
+      <section class="view" id="view-insights">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> APRENDER SIN CULPAR</div><h1>Ideas para avanzar juntos</h1><p class="subheading">Sugerencias transparentes, basadas en los datos que registra tu familia.</p></div><span class="soft-badge">Consejos educativos</span></div>
+        <div class="insights-intro"><div class="insight-sun">✧</div><div><h2>Pequeños acuerdos, grandes cambios.</h2><p>Estas ideas no juzgan tus decisiones: te ayudan a encontrar el siguiente paso.</p></div></div><div id="insightsList" class="insights-grid"></div>
+        <div class="conversation-card"><div class="conversation-icon">♡</div><div><span class="eyebrow">PREGUNTA PARA COMPARTIR</span><h2>¿Qué acuerdo sencillo podría ayudarnos a revisar el presupuesto cada mes?</h2><p>Escuchen todas las ideas antes de elegir un compromiso que funcione para el hogar.</p></div><button class="outline-button" id="newQuestion">Otra pregunta ↻</button></div>
+      </section>
+
+      <section class="view" id="view-goals">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> UN PROPÓSITO COMPARTIDO</div><h1>Metas familiares</h1><p class="subheading">Ahorrar también puede ser una forma de trabajar en equipo.</p></div><button class="primary-button" id="addGoalButton">＋ Nueva meta</button></div>
+        <div id="goalsGrid" class="goals-grid"></div><div class="gentle-note"><span class="note-icon">♡</span><div><strong>Una meta debe adaptarse a la vida real.</strong><p>Consideren primero las necesidades esenciales y los ingresos variables antes de definir cuánto ahorrar.</p></div></div>
+      </section>
+
+      <section class="view" id="view-help">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> TRANSPARENCIA Y CUIDADO</div><h1>Ayuda y privacidad</h1><p class="subheading">Conoce cómo funciona LUCA y cómo cuidar tu información.</p></div></div>
+        <div class="help-grid"><article class="panel help-card"><span class="help-icon">⌘</span><h2>Cómo empezar</h2><p>Registra ingresos y gastos desde Movimientos. Define límites en Presupuesto y agrega las facturas del hogar. El resumen se actualizará automáticamente.</p></article><article class="panel help-card"><span class="help-icon">◈</span><h2>¿Dónde se guardan los datos?</h2><p>Esta versión usa el almacenamiento local de este navegador. No sincroniza automáticamente entre dispositivos y borrar los datos del navegador puede eliminarlos.</p></article><article class="panel help-card"><span class="help-icon">♧</span><h2>Cuida tu privacidad</h2><p>Utiliza datos ficticios para demostraciones. No ingreses contraseñas bancarias, números de cuenta ni facturas con datos personales sensibles.</p></article><article class="panel help-card"><span class="help-icon">✧</span><h2>Una herramienta educativa</h2><p>LUCA ayuda a organizar información y conversar sobre prioridades. No reemplaza asesoría financiera, psicológica ni familiar profesional.</p></article></div>
+        <article class="panel data-tools"><div><h2>Datos de esta demostración</h2><p>Exporta una copia en JSON o reinicia el espacio de prueba.</p></div><div class="data-buttons"><button class="outline-button" id="exportData">↓ Exportar datos</button><button class="danger-button" id="resetData">Reiniciar demo</button></div></article>
+      </section>
+
+      <footer class="app-footer"><span>✧ LUCA <span class="footer-muted">· Finanzas claras, familias fuertes</span></span><span>Hecho para crecer en familia <span class="footer-heart">♡</span></span></footer>
+    </main>
+  </div>
+
+  <section class="auth-screen" id="authScreen" aria-label="Acceso a LUCA">
+    <div class="auth-glow auth-glow-one"></div><div class="auth-glow auth-glow-two"></div>
+    <div class="auth-brand"><span class="brand-mark"><span class="brand-orbit"></span><span class="brand-core">L</span></span><span><strong>LUCA</strong><small>Finanzas claras, familias fuertes</small></span></div>
+    <div class="auth-card">
+      <div class="auth-kicker"><span class="live-dot"></span> UN ESPACIO PARA CRECER JUNTOS</div>
+      <div class="auth-heading"><h1 id="authTitle">Qué bueno tenerlos aquí.</h1><p id="authSubtitle">Inicien sesión para continuar cuidando las finanzas de su familia.</p></div>
+      <div class="auth-tabs"><button type="button" class="auth-tab active" id="showLogin">Iniciar sesión</button><button type="button" class="auth-tab" id="showRegister">Crear familia</button></div>
+      <form id="loginForm" class="auth-form">
+        <label for="loginUser">Usuario familiar</label><input id="loginUser" name="username" autocomplete="username" placeholder="Ej. familiaquinto" required>
+        <label for="loginPassword">Contraseña</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Escriban su contraseña" required>
+        <div class="auth-error" id="loginError" role="alert"></div><button class="primary-button auth-submit" type="submit">Entrar a nuestro espacio <span>→</span></button>
+        <p class="auth-footnote">Sus datos financieros permanecen asociados a esta cuenta en este navegador.</p>
+      </form>
+      <form id="registerForm" class="auth-form hidden">
+        <label for="familyLastNames">Apellidos de la familia</label><input id="familyLastNames" name="lastNames" maxlength="70" placeholder="Ej. Quinto Ayub" required>
+        <label for="registerUser">Crear nombre de usuario</label><input id="registerUser" name="username" minlength="3" maxlength="30" autocomplete="username" placeholder="Ej. familiaquinto" required>
+        <label for="registerPassword">Crear contraseña</label><input id="registerPassword" name="password" type="password" minlength="6" autocomplete="new-password" placeholder="Mínimo 6 caracteres" required>
+        <label for="registerPasswordConfirm">Confirmar contraseña</label><input id="registerPasswordConfirm" name="passwordConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="Repitan la contraseña" required>
+        <div class="auth-error" id="registerError" role="alert"></div><button class="primary-button auth-submit" type="submit">Crear nuestro espacio <span>→</span></button>
+        <p class="auth-footnote">La cuenta y los datos se guardan en este navegador. No se sincronizan entre dispositivos.</p>
+      </form>
+    </div>
+    <div class="auth-bottom"><span>✧</span> Cada decisión cuenta. Cada familia tiene su propio camino.</div>
+  </section>
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><span class="eyebrow"><span class="eyebrow-line"></span> ESPACIO FAMILIAR</span><h2 id="modalTitle">Nuevo movimiento</h2></div><button class="icon-button modal-close" id="modalClose" aria-label="Cerrar">×</button></div><form id="entryForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="outline-button" id="modalCancel">Cancelar</button><button type="submit" class="primary-button">Guardar cambios <span>→</span></button></div></form></section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app/script.js"></script>
+</body>
+</html>
