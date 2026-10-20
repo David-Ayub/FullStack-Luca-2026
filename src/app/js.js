@@ -48,7 +48,7 @@ let state = loadState();
 let modalMode = "movement", editId = null, toastTimer;
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-function loadState(){try{const key=activeFamily?`${STORAGE_KEY}:${activeFamily.id}`:STORAGE_KEY;const raw=localStorage.getItem(key);return raw?JSON.parse(raw):initialData()}catch{return initialData()}}
+function loadState(){try{const key=activeFamily?`${STORAGE_KEY}:${activeFamily.id}`:STORAGE_KEY;const raw=localStorage.getItem(key);return raw?JSON.parse(raw):(activeFamily?emptyFamilyData():initialData())}catch{return activeFamily?emptyFamilyData():initialData()}}
 function saveState(){try{const key=activeFamily?`${STORAGE_KEY}:${activeFamily.id}`:STORAGE_KEY;localStorage.setItem(key,JSON.stringify(state))}catch{showToast("No se pudo guardar en este navegador.")}}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function currentMonth(){return $("#monthFilter")?.value||"2026-10"}
@@ -244,8 +244,11 @@ function bindAuth(){
   if(password.length<6){error.textContent="La contraseña debe tener al menos 6 caracteres.";return}
   if(password!==confirm){error.textContent="Las contraseñas no coinciden.";return}
   const accounts=readAccounts();if(accounts.some(a=>a.username===username)){error.textContent="Ese usuario ya existe. Elijan otro.";return}
-  const family={id:uid(),lastNames,username,passwordHash:await passwordDigest(password),createdAt:new Date().toISOString()};
-  try{let firstFamilyData=emptyFamilyData();if(accounts.length===0){const previous=localStorage.getItem(STORAGE_KEY);if(previous){try{firstFamilyData=JSON.parse(previous)}catch{}}}accounts.push(family);saveAccounts(accounts);activeFamily=family;state=firstFamilyData;saveState();enterFamily(family)}catch{error.textContent="No se pudo guardar la cuenta en este navegador."}
+  const salary=Number($("#setupSalary").value),otherIncome=Number($("#setupOtherIncome").value),budgetTotal=Number($("#setupBudget").value),savingsGoal=Number($("#setupSavings").value);
+  if([salary,otherIncome,budgetTotal,savingsGoal].some(n=>!Number.isFinite(n)||n<0)){error.textContent="Revisen los valores financieros. No pueden ser negativos.";return}
+  if(salary+otherIncome===0){error.textContent="Registren al menos un ingreso mensual para comenzar.";return}
+  const family={id:uid(),lastNames,username,passwordHash:await passwordDigest(password),createdAt:new Date().toISOString(),monthlyIncome:{salary,otherIncome},budgetTotal,savingsGoal};
+  try{accounts.push(family);saveAccounts(accounts);activeFamily=family;const now=todayISO();const movements=[];if(salary>0)movements.push({id:uid(),type:"ingreso",title:"Sueldo familiar",category:"Salario",date:now,amount:salary,description:"Sueldo mensual ingresado al crear la cuenta"});if(otherIncome>0)movements.push({id:uid(),type:"ingreso",title:"Otros ingresos familiares",category:"Otros",date:now,amount:otherIncome,description:"Otros ingresos mensuales declarados"});const budgets=budgetTotal>0?[{id:uid(),category:"Vivienda",amount:Math.round(budgetTotal*.35)},{id:uid(),category:"Alimentación",amount:Math.round(budgetTotal*.25)},{id:uid(),category:"Servicios",amount:Math.round(budgetTotal*.12)},{id:uid(),category:"Transporte",amount:Math.round(budgetTotal*.10)},{id:uid(),category:"Salud",amount:Math.round(budgetTotal*.08)},{id:uid(),category:"Otros",amount:Math.max(0,budgetTotal-Math.round(budgetTotal*.90))}]:[];state={movements,budgets,bills:[],goals:savingsGoal>0?[{id:uid(),title:"Meta de ahorro mensual",icon:"◎",saved:0,target:savingsGoal,color:"#5bdcb4",deadline:""}]:[]};saveState();enterFamily(family)}catch{error.textContent="No se pudo guardar la cuenta en este navegador."}
  });
  $("#logoutButton").addEventListener("click",logoutFamily);
  // No se inicia sesión automáticamente: la cuenta queda guardada, pero se solicita la contraseña al volver.

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styless/styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
@@ -52,6 +52,7 @@
           <div><div class="eyebrow"><span class="eyebrow-line"></span> TU TRANQUILIDAD EMPIEZA AQUÍ</div><h1 id="welcomeHeading">¡Bienvenidos a LUCA! <span class="wave">✳</span></h1><p class="subheading">Cada decisión cuenta. Miremos cómo va nuestro dinero.</p></div>
           <div class="period-picker"><span class="period-dot"></span><select id="monthFilter" aria-label="Seleccionar mes"><option value="2026-10">Octubre 2026</option><option value="2026-09">Septiembre 2026</option><option value="2026-08">Agosto 2026</option></select><span>⌄</span></div>
         </div>
+        <article class="verse-card"><div class="verse-mark">“</div><div><span class="verse-label">UN PRINCIPIO PARA NUESTRO HOGAR</span><blockquote>Más vale tener poco, con temor del Señor, que muchas riquezas con grandes angustias.</blockquote><p>Proverbios 15:16</p></div></article>
         <div class="hero-card">
           <div class="hero-grid"></div><div class="hero-content">
             <div class="hero-top"><span class="hero-label"><span class="live-dot"></span> BALANCE DEL MES</span><span class="hero-chip">✦ Vista familiar</span></div>
@@ -124,16 +125,21 @@
       <div class="auth-heading"><h1 id="authTitle">Qué bueno tenerlos aquí.</h1><p id="authSubtitle">Inicien sesión para continuar cuidando las finanzas de su familia.</p></div>
       <div class="auth-tabs"><button type="button" class="auth-tab active" id="showLogin">Iniciar sesión</button><button type="button" class="auth-tab" id="showRegister">Crear familia</button></div>
       <form id="loginForm" class="auth-form">
-        <label for="loginUser">Usuario familiar</label><input id="loginUser" name="username" autocomplete="username" placeholder="Ej. familiaquinto" required>
+        <label for="loginUser">Usuario familiar</label><input id="loginUser" name="username" autocomplete="username" placeholder="Ej. familiaperezlopez" required>
         <label for="loginPassword">Contraseña</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Escriban su contraseña" required>
         <div class="auth-error" id="loginError" role="alert"></div><button class="primary-button auth-submit" type="submit">Entrar a nuestro espacio <span>→</span></button>
         <p class="auth-footnote">Sus datos financieros permanecen asociados a esta cuenta en este navegador.</p>
       </form>
       <form id="registerForm" class="auth-form hidden">
-        <label for="familyLastNames">Apellidos de la familia</label><input id="familyLastNames" name="lastNames" maxlength="70" placeholder="Ej. Quinto Ayub" required>
-        <label for="registerUser">Crear nombre de usuario</label><input id="registerUser" name="username" minlength="3" maxlength="30" autocomplete="username" placeholder="Ej. familiaquinto" required>
+        <label for="familyLastNames">Apellidos de la familia</label><input id="familyLastNames" name="lastNames" maxlength="70" placeholder="Ej. Pérez López" required>
+        <label for="registerUser">Crear nombre de usuario</label><input id="registerUser" name="username" minlength="3" maxlength="30" autocomplete="username" placeholder="Ej. familiaperezlopez" required>
         <label for="registerPassword">Crear contraseña</label><input id="registerPassword" name="password" type="password" minlength="6" autocomplete="new-password" placeholder="Mínimo 6 caracteres" required>
         <label for="registerPasswordConfirm">Confirmar contraseña</label><input id="registerPasswordConfirm" name="passwordConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="Repitan la contraseña" required>
+        <div class="setup-divider"><span>PRIMEROS DATOS DE SU HOGAR</span><small>Los pueden cambiar después.</small></div>
+        <label for="setupSalary">Sueldo mensual principal (COP)</label><input id="setupSalary" name="salary" type="number" min="0" step="1000" placeholder="Ej. 2500000" required>
+        <label for="setupOtherIncome">Otros ingresos mensuales (COP)</label><input id="setupOtherIncome" name="otherIncome" type="number" min="0" step="1000" placeholder="Si no tienen, escriban 0" value="0" required>
+        <label for="setupBudget">Presupuesto mensual total (COP)</label><input id="setupBudget" name="budgetTotal" type="number" min="0" step="1000" placeholder="Ej. 2200000" required>
+        <label for="setupSavings">Meta de ahorro mensual (COP)</label><input id="setupSavings" name="savingsGoal" type="number" min="0" step="1000" placeholder="Ej. 200000" value="0" required>
         <div class="auth-error" id="registerError" role="alert"></div><button class="primary-button auth-submit" type="submit">Crear nuestro espacio <span>→</span></button>
         <p class="auth-footnote">La cuenta y los datos se guardan en este navegador. No se sincronizan entre dispositivos.</p>
       </form>
@@ -144,6 +150,6 @@
     <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><span class="eyebrow"><span class="eyebrow-line"></span> ESPACIO FAMILIAR</span><h2 id="modalTitle">Nuevo movimiento</h2></div><button class="icon-button modal-close" id="modalClose" aria-label="Cerrar">×</button></div><form id="entryForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="outline-button" id="modalCancel">Cancelar</button><button type="submit" class="primary-button">Guardar cambios <span>→</span></button></div></form></section>
   </div>
   <div class="toast" id="toast" role="status"></div>
-  <script src="app/script.js"></script>
+  <script src="app/js.js"></script>
 </body>
 </html>
